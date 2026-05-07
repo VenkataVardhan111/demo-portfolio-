@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venkata Vardhan | Y2K Portfolio</title>
+    <style>
+        /* Y2K & Cyberpunk CSS Reset */
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            color: #0f0;
+            font-family: 'VT323', monospace;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(#0f0 1px, transparent 1px),
+                radial-gradient(#0f0 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* CRT Scanline Overlay */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Press Start 2P', cursive;
+            text-transform: uppercase;
+        }
+
+        /* Neon & Glitch Effects */
+        .neon-text-pink {
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+        }
+
+        .neon-text-cyan {
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+        }
+
+        .neon-border {
+            border: 2px solid #0f0;
+            box-shadow: 0 0 10px #0f0, inset 0 0 10px #0f0;
+            background: rgba(0, 25, 0, 0.8);
+        }
+
+        /* Layout */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 4px dashed #ff00ff;
+            background: #000;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: glitch 1.5s infinite;
+        }
+
+        .typewriter {
+            font-size: 1.5rem;
+            color: #0ff;
+            min-height: 30px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        section {
+            margin-bottom: 60px;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #0ff;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* Grid for Projects */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            padding: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: url('https://cur.cursors-4u.net/games/gam-13/gam1282.cur'), auto;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff00ff, inset 0 0 15px #ff00ff;
+            border-color: #ff00ff;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid #0ff;
+            margin-bottom: 15px;
+            filter: grayscale(100%) contrast(150%);
+            transition: filter 0.3s;
+        }
+
+        .card:hover img {
+            filter: grayscale(0%) contrast(120%);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ff00ff;
+        }
+
+        .card p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        /* Marquee for Skills */
+        .marquee-container {
+            background: #ff00ff;
+            color: #000;
+            padding: 10px 0;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            overflow: hidden;
+            border-top: 4px dashed #0ff;
+            border-bottom: 4px dashed #0ff;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Contact & Footer */
+        .contact-links a {
+            color: #0ff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 4px dashed #0f0;
+            background: #000;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Keyframes */
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #0ff; }
+            25% { text-shadow: -2px 2px 0px #ff00ff, 2px -2px 0px #0ff; }
+            50% { text-shadow: 2px -2px 0px #ff00ff, -2px 2px 0px #0ff; }
+            75% { text-shadow: -2px -2px 0px #ff00ff, 2px 2px 0px #0ff; }
+            100% { text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #0ff; }
+        }
+
+    </style>
+</head>
+    <!-- <link rel="stylesheet" href="proo.css"> -->
+<body>
+
+    <header>
+        <h1 class="neon-text-pink">Venkata Vardhan</h1>
+        <div class="typewriter" id="typing-text"></div>
+        <p style="margin-top: 15px; font-size: 1.5rem;">Sreyas Institute of Engineering & Technology | BTech CSE (AI & ML)</p>
+    </header>
+
+    <div class="marquee-container">
+        <marquee scrollamount="12">
+            /// PYTHON /// JAVA /// C++ /// TENSORFLOW /// PYTORCH /// MEDIAPIPE /// ROS2 /// RASPBERRY PI /// DEEP LEARNING /// HTML/CSS/JS /// MONGODB ///
+        </marquee>
+    </div>
+
+    <div class="container">
+        
+        <section class="neon-border">
+            <h2 class="neon-text-cyan">Experience.EXE</h2>
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.2rem;">> Robotics Hub- Yotzeron | Internship</h3>
+                <p style="color: #888; font-size: 1.2rem; margin-bottom: 10px;">[Nov 2025 - Apr 2026]</p>
+                <p style="font-size: 1.3rem;">Developed robotic arm and Kevin-Bot projects. Designed 3D-printed models and gained deep knowledge in IoT devices and microprocessors.</p>
+            </div>
+            <div>
+                <h3 style="font-size: 1.2rem;">> SkillGrad | Internship</h3>
+                <p style="color: #888; font-size: 1.2rem; margin-bottom: 10px;">[Apr 2025 - Mar 2025]</p>
+                <p style="font-size: 1.3rem;">Contributed to web application development and testing. Worked with AngularJS for frontend and Node.JS for backend services.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="neon-text-pink">Projects_Directory</h2>
+            <div class="grid">
+                
+                <div class="card neon-border">
+                    <img src="./assets/kevin_bot.jpeg" alt="Kevin-Bot">
+                    <h3>Kevin-Bot</h3>
+                    <p>Campus delivery bot built with Raspberry Pi 4, Rvis, and DC motors. Uses MediaPipe and OpenCV for automation and navigation.</p>
+                </div>
+
+                <div class="card neon-border">
+                    <img src="./assets/robotic_arm.jpeg" alt="Robotic Arm">
+                    <h3>Vision Robotic Arm</h3>
+                    <p>Automated 4DOF manufacturing arm using Raspberry Pi 4, servo motors, AdaFruitServoKit, and MediaPipe hand tracking.</p>
+                </div>
+
+                <div class="card neon-border">
+                    <img src="./assets/sample.jpeg" alt="Pacman" style="height: 300px; ">
+                    <h3>Pacman Arcade</h3>
+                    <p>Classic arcade maze game. Eat the pellets and avoid Blinky, Pinky, Inky, and Clyde. A tribute to retro gaming engineering.</p>
+                </div>
+
+                <div class="card neon-border">
+                    <img src="./assets/music_plaer.jpeg" alt="Musical Instruments" style="height: 300px;" width="200px">
+                    <h3>Gesture Music</h3>
+                    <p>A virtual musical instrument experience controlled entirely by hand gestures using MediaPipe and OpenCV2. Award-winning mini project.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="neon-border" style="text-align: center;">
+            <h2 class="neon-text-cyan">Connect_To_Server</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 20px;">Ready to collaborate on AI, Robotics, or Web Dev?</p>
+            <div class="contact-links">
+                <a href="mailto:venkatavardhan111@gmail.com">[ EMAIL ]</a>
+                <a href="https://github.com/VenkataVardhan111" target="_blank">[ GITHUB ]</a>
+                <a href="www.linkedin.com/in/venkata-vardhan-675666290" target="_blank">[ LINKEDIN ]</a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>SYS.ADMIN: Katta Venkata Vardhan © 2026</p>
+        <p style="color: #555; font-size: 1rem; margin-top: 10px;">CONNECTION SECURE // END OF FILE</p>
+    </footer>
+
+    <script>
+        const textArray = [
+            "Initializing AI & Machine Learning Protocols...", 
+            "Loading Robotics Scripts (ROS2)...", 
+            "Compiling Web Technologies...",
+            "Passionate Tech Explorer."
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        const typingElement = document.getElementById("typing-text");
+
+        function type() {
+            if (charIndex < textArray[textIndex].length) {
+                typingElement.innerHTML += textArray[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 50); // Typing speed
+            } else {
+                setTimeout(erase, 2000); // Wait before erasing
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typingElement.innerHTML = textArray[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, 25); // Erasing speed
+            } else {
+                textIndex = (textIndex + 1) % textArray.length;
+                setTimeout(type, 500); // Wait before typing next word
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(type, 1000);
+        });
+    </script>
+</body>
+</html>
